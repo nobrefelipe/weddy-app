@@ -26,23 +26,21 @@ class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
        
-        //CONTROLLERS
+        //App Controller
         Bind((i) => AppController()),
 
         // Guests Controller
-        // inject it here because we need global access to the guests
+        // inject it here(globally) because we need global access to the guests
         Bind((i) => GuestsController(i.get<GuestsRepository>())),
-
-
         // Guests Repository needs Hasura Connect so it can get the data from Hasura
-        // Inject the Guests Repository globally because we will need it in different places
         Bind((i) => GuestsRepository(i.get<HasuraConnect>())),
 
         Bind((i) => AddPostController(i.get<AddPostRepository>())),
         Bind((i) => AddPostRepository(i.get<HasuraConnect>())),
 
         // LIBS //
-        // Inject Hasura Connect Library with the hasura DB URL
+        // Inject Custom Hasura Connect Library, 
+        // pass in  FirebaseAuth so we get the token of the logged in user on every request to hasura
         Bind((i) => CustomHasuraConnect.getConnect(i.get<FirebaseAuth>())),
 
         // Inject the firebase auth instance of current user
