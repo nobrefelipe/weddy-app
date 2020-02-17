@@ -9,7 +9,9 @@ It is a sort of social network for guests of an wedding.
 ### Tecnologies
 
 **Flutter**
+
 **Flutter Modular** for the project structure and dependency incection
+
 **MobX** for state management 
 
 **API*:* For the database I decided to use **GraphQL** so *Hasura* does all the heavy lifting;
