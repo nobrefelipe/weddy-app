@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "340368256861",
+    "firebase_url": "https://weddy-app-1.firebaseio.com",
+    "project_id": "weddy-app-1",
+    "storage_bucket": "weddy-app-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340368256861:android:588b180be16d02717dc2b4",
+        "android_client_info": {
+          "package_name": "com.weddyapp.weddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340368256861-572sn75b37qraliev1jdkf4k0mq4aoa6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbPxvzxM9fyVnWNQ3ZEgZ6EpozqAf2Sks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340368256861-572sn75b37qraliev1jdkf4k0mq4aoa6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "340368256861-vopa2e06m5pblrhukp5rqh7jgaciveie.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.weddyapp.weddy"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
