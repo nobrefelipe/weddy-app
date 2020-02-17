@@ -54,9 +54,9 @@ They can see also the list of  all guests.
 
 
 <!-- ##### User registration details -->
-The guest download the app and register to it.
+<!-- The guest download the app and register to it.
 After providing email and password the user is created on Firebase. 
 Then on the next screen the user provides name and surname. 
 On clicking `finish registration` button I create the user on Hasura as well
 
-The id of the user will be the same id firebase created 
+The id of the user will be the same id firebase created  -->
