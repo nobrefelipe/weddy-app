@@ -50,7 +50,7 @@ abstract class _CompleteRegistrationBase with Store {
       return false;
     }
 
-    return await _completeRegistrationRepository.addUser(name, surname, userID, userEmail, 'picture');
+    return await _completeRegistrationRepository.addUser(name, surname, userID, userEmail, '');
   
   }
 }

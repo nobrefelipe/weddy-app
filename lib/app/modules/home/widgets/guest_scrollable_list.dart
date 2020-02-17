@@ -66,6 +66,8 @@ class GuestScrollableList extends StatelessWidget {
                   itemCount: _guestsController.allGuests.length,
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (BuildContext ctxt, int index) {
+                    var guest = _guestsController.allGuests[index];
+
                     return Transform.scale(
                       scale: amount,
                       child: Padding(
@@ -79,10 +81,15 @@ class GuestScrollableList extends StatelessWidget {
                               Container(
                                 width: 50,
                                 height: 50,
+                                decoration: BoxDecoration(
+                                  color: Colors.black12,
+                                  borderRadius: BorderRadius.circular(25),
+                                ) ,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(25.0),
-                                  child: Image.network(
-                                      "${_guestsController.allGuests[index].picture}"),
+                                  child: (guest.picture != "")
+                                      ? Image.network("${guest.picture}")
+                                      : Image.asset("assets/img/avatar.png")
                                 ),
                               ),
                               /**
@@ -92,6 +99,7 @@ class GuestScrollableList extends StatelessWidget {
                                 padding: const EdgeInsets.only(top: 5.0),
                                 child: Text(
                                   "${_guestsController.allGuests[index].name} ${_guestsController.allGuests[index].surname}",
+                                  overflow: TextOverflow.ellipsis,
                                   style: AppStyles.body_text_small,
                                 ),
                               ),

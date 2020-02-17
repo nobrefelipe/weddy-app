@@ -17,7 +17,6 @@ environment:
   sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
-  shared_preferences: ^0.5.6+1
   firebase_auth: ^0.15.4
   cached_network_image: ^2.0.0
   uuid: 2.0.4
@@ -62,6 +61,7 @@ flutter:
   assets:
     - assets/img/wedday-logo.png
     - assets/img/be-the-first.png  
+    - assets/img/avatar.png  
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

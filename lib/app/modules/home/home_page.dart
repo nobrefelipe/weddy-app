@@ -7,7 +7,6 @@ import 'package:weddy/app/modules/home/widgets/bottom_navigation_bar.dart';
 import 'package:weddy/app/modules/home/widgets/guest_scrollable_list.dart';
 import 'package:weddy/app/modules/home/widgets/posts_grid.dart';
 import 'package:weddy/app/shared/widgets/logo.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatelessWidget {
 
@@ -41,7 +40,7 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           /** GUEST SCROLLABLE LIST **/
-          //GuestScrollableList(),
+          GuestScrollableList(),
 
           /** POSTS GRID **/
           PostsGrid(),

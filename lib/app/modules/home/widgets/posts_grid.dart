@@ -36,7 +36,11 @@ class PostsGrid extends StatelessWidget {
           children: [
             /**
              *  DISCOVER **/
-            Text("Discover", style: AppStyles.h1_bold),
+            Padding(
+              padding: const EdgeInsets.only(top:10.0, left: 10.0),
+              child: Text("Discover", style: AppStyles.h1_bold),
+            ),
+            
             SizedBox(height: 20),
 
             /** 
