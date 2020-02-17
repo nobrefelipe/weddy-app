@@ -14,7 +14,7 @@ It is a sort of social network for guests of an wedding.
 
 **MobX** for state management 
 
-**API*:* For the database I decided to use **GraphQL** so *Hasura* does all the heavy lifting;
+**API:** For the database I decided to use **GraphQL** so *Hasura* does all the heavy lifting;
 
 **Authentication:** Hasura doesn't have authentication implemented (yet) but it allow us to acccess the api using JWT. So I use **Firebase** for authentication.
 When the user is created I set a custom claim to the new user via **Cloud Functions** to set a signature that Hasura will understand
@@ -36,6 +36,27 @@ The idea of the app is to make it simpler for the guests to get all the pictures
 So no one needs to ask anybody to send the pictures over.
 
 
-#### User journey
-##### Creating the wedding
-The couple download the app and register 
+### User journey
+#### (TODO) : Creating the wedding
+The marrying people download the app, register and create the wedding.
+The app will generate a wedding passcode and attach it to the wedding ID.
+
+The passcode will be needed for gue guests to access the wedding. 
+So the merrying couple need to provide the code to all guests. 
+THey can do it manually or by giving the app the email address of the guests, so the app send it to everybody.
+
+#### Guest journey
+The guest download the app and register to it.
+The app will ask the guest to provide a 6 number code for the wedding.
+On the home screen the user will be able to view all the pictures the other guests are posting and will be able to download them.
+
+They can see also the list of  all guests.
+
+
+<!-- ##### User registration details -->
+The guest download the app and register to it.
+After providing email and password the user is created on Firebase. 
+Then on the next screen the user provides name and surname. 
+On clicking `finish registration` button I create the user on Hasura as well
+
+The id of the user will be the same id firebase created 
