@@ -1,16 +1,16 @@
 # weddy
 
-A new Flutter project.
+`STATUS: NOT COMPLETED`
 
-## Getting Started
+This if my first real world app  I am developing using flutter.
+It is a sort of social network for guests of an wedding.
 
-This project is a starting point for a Flutter application.
+### The idea
 
-A few resources to get you started if this is your first Flutter project:
+People love to take and share pictures of their social life, specially in weddings.
+The idea of the app is to make it simpler for the guests to get all the pictures the other guests are taking.
+So no one needs to ask anybody to send the pictures over.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### User journey
+
