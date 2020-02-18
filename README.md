@@ -50,7 +50,7 @@ The guest download the app and register to it.
 The app will ask the guest to provide a 6 number code for the wedding.
 On the home screen the user will be able to view all the pictures the other guests are posting and will be able to download them.
 
-They can see also the list of  all guests.
+They can also see the list of  all guests.
 
 
 <!-- ##### User registration details -->
