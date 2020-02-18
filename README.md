@@ -1,6 +1,10 @@
 # weddy
 
-`STATUS: NOT COMPLETED - WORKING IN PROGRESS`
+```
+STATUS: working in progress
+COMMENTS: trying to come out with a good commets  methodology. Eg: lib/app/modules/home/widgets/guest_scrollable_list.dar
+```
+
 
 
 This if my first real world app  I am developing using flutter.
@@ -60,3 +64,4 @@ Then on the next screen the user provides name and surname.
 On clicking `finish registration` button I create the user on Hasura as well
 
 The id of the user will be the same id firebase created  -->
+
