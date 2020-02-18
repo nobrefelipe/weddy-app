@@ -20,9 +20,16 @@ class PostAuthor extends StatelessWidget {
         children: [
           Container(
             width: size == 'medium' ? 40 : 30,
+            height: size == 'medium' ? 40 : 30,
+            decoration: BoxDecoration(
+              color: Colors.black12,
+              borderRadius: BorderRadius.circular(50),
+            ),
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(30.0),
-                child: Image.network(userData.picture)),
+                child: (userData.picture != "")
+                    ? Image.network(userData.picture)
+                    : Image.asset("assets/img/avatar.png")),
           ),
           SizedBox(width: 5),
           Text(

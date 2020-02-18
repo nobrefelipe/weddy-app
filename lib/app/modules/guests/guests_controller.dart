@@ -17,13 +17,11 @@ abstract class _GuestsBase with Store {
 
   // ALL GUEST OBSERVABLE
   @observable
-  List<UserModel> allGuests = [];
+  Stream<List<UserModel>> allGuests;
 
   // GET ALL GUESTS
   _getAllGuests() {
-    _guestsRepository.getGuests().then((data) {
-      allGuests = data;
-    });
+    allGuests = _guestsRepository.getGuests();
   }
 
   // FILTERING
@@ -31,23 +29,26 @@ abstract class _GuestsBase with Store {
   @observable
   String filter = "";
 
-  // Filter the guests
-  // receive the index from the list and check if the item contains
-  // the filter value in the NAME attribute
-  @action
-  bool filterByIndex(index) {
-    return allGuests // All Guests
-        .toList()[index] // Transform it to a list and get it by the index
-        .name // we want to apply the filter to the NAME attribute
-        .toLowerCase() // make sure it's all lower case
-        .contains(
-          // Check if the NAME CONTAINS hte FILTER value
-          filter.toLowerCase(), // make sure the flter value is lowercase
-        );
-  }
 
   // Set the filter value
   // we call this action from the onChange event of the search box
   @action
   void filterGuestByName(value) => filter = value;
+
+  // Filter the guests
+  // receive the guest item from the list and check if the item contains
+  // the filter value in the NAME attribute
+  @action
+  bool filterByIndex(guest) {
+  
+
+    return guest
+        .name // we want to apply the filter to the NAME attribute
+        .toLowerCase() // make sure it's all lower case
+        .contains(// Check if the NAME CONTAINS the FILTER value
+          filter.toLowerCase(), // make sure the filter value is lowercase
+        );
+  }
+
+  
 }

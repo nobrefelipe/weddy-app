@@ -12,14 +12,14 @@ mixin _$GuestsController on _GuestsBase, Store {
   final _$allGuestsAtom = Atom(name: '_GuestsBase.allGuests');
 
   @override
-  List<UserModel> get allGuests {
+  Stream<List<UserModel>> get allGuests {
     _$allGuestsAtom.context.enforceReadPolicy(_$allGuestsAtom);
     _$allGuestsAtom.reportObserved();
     return super.allGuests;
   }
 
   @override
-  set allGuests(List<UserModel> value) {
+  set allGuests(Stream<List<UserModel>> value) {
     _$allGuestsAtom.context.conditionallyRunInAction(() {
       super.allGuests = value;
       _$allGuestsAtom.reportChanged();
@@ -46,20 +46,20 @@ mixin _$GuestsController on _GuestsBase, Store {
   final _$_GuestsBaseActionController = ActionController(name: '_GuestsBase');
 
   @override
-  bool filterByIndex(dynamic index) {
+  void filterGuestByName(dynamic value) {
     final _$actionInfo = _$_GuestsBaseActionController.startAction();
     try {
-      return super.filterByIndex(index);
+      return super.filterGuestByName(value);
     } finally {
       _$_GuestsBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void filterGuestByName(dynamic value) {
+  bool filterByIndex(dynamic guest) {
     final _$actionInfo = _$_GuestsBaseActionController.startAction();
     try {
-      return super.filterGuestByName(value);
+      return super.filterByIndex(guest);
     } finally {
       _$_GuestsBaseActionController.endAction(_$actionInfo);
     }

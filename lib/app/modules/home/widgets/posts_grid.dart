@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:weddy/app/modules/home/widgets/no_posts_yet.dart';
 import 'package:weddy/app/modules/home/widgets/post_grid_item.dart';
 import 'package:weddy/app/shared/styles/app_styles.dart';
+import 'package:weddy/app/shared/widgets/loading_indicator.dart';
 
 import '../home_controller.dart';
 
@@ -54,13 +55,7 @@ class PostsGrid extends StatelessWidget {
                   /** 
                    * SHOW LOADING WHILE FETCHING DATA */
                   if (!snapshot.hasData) {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        backgroundColor: AppStyles.primaryColorAlpha,
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                            AppStyles.primaryColor),
-                      ),
-                    );
+                    return LoadingIndicator();
                   }
 
                   /** 

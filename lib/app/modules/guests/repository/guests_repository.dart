@@ -13,9 +13,9 @@ class GuestsRepository extends Disposable {
   GuestsRepository(this._hasuraConnect);
 
   // GET GUESTS
-  Future<List<UserModel>> getGuests() async {
+  Stream<List<UserModel>> getGuests() {
     var getUsersQuery = '''
-        query MyQuery {
+        subscription GuestsSubscription {
           users {
             name
             id
@@ -25,9 +25,12 @@ class GuestsRepository extends Disposable {
         }
       ''';
 
-    var snapshot = await _hasuraConnect.query(getUsersQuery);
-    var data = UserModel.fromJsonList(snapshot['data']['users'] as List);
+    var snapshot = _hasuraConnect.subscription(getUsersQuery);
+
+    var data =  snapshot.map((data) => UserModel.fromJsonList(data["data"]["users"] as List));
+
     return data;
+
   }
 
   //dispose will be called automatically
