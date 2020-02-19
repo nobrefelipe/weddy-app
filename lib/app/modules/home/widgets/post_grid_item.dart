@@ -17,7 +17,7 @@ class PostItem extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 15.0),
           child: GestureDetector(
-            onTap: () => Modular.to.pushNamed("user"),
+            onTap: () => Modular.to.pushNamed("/user/${postItem.user.userUid}"),
             child: PostAuthor(
               // vai receber o author do post passado pelo pai
               size: "small",

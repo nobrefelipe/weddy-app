@@ -35,6 +35,7 @@ class _PostPageState extends State<PostPage> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           // CUSTOM BACK BUTTOn

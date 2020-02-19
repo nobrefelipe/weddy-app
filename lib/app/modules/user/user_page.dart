@@ -1,86 +1,90 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:weddy/app/modules/user/widgets/avatar.dart';
+import 'package:weddy/app/modules/user/widgets/avatar_placeholder.dart';
+import 'package:weddy/app/modules/user/widgets/user_posts.dart';
+import 'package:weddy/app/modules/user/widgets/user_posts_placeholder.dart';
 import 'package:weddy/app/shared/styles/app_styles.dart';
+import 'package:weddy/app/shared/widgets/loading_indicator.dart';
 
-class UserPage extends StatelessWidget {
+import 'user_controller.dart';
+
+class UserPage extends StatefulWidget {
+  final String id;
+  const UserPage({Key key, this.id}) : super(key: key);
+
+  @override
+  _UserPageState createState() => _UserPageState();
+}
+
+class _UserPageState extends State<UserPage> {
+  final _userController = Modular.get<UserController>();
+
+  // Post
+  Future user;
+
+  // Get the post by the id
+  @override
+  void initState() {
+    user = _userController.getUser(widget.id);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.only(top: 2, left: 2),
-              width: double.infinity,
-              height: 180,
-              child: Stack(
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.arrow_back_ios),
-                    onPressed: () => Modular.to.pop(),
-                    color: AppStyles.primaryColor,
-                  ),
-                  Positioned(
-                    left: MediaQuery.of(context).size.width / 2 - 50,
-                    top: 10,
-                    child: Column(
-                      children: [
-                        Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(50),
-                            border: Border.all(
-                                color: AppStyles.primaryColor, width: 3),
-                            image: DecorationImage(
-                              image: AssetImage("assets/img/wedding-image.png"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Felipe Nobre",
-                          style: AppStyles.body_text,
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Expanded(
-              child: GridView.builder(
-                itemBuilder: (BuildContext context, int index) {
-                  //** POST ITEMS **/
-                  return GestureDetector(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          border: Border.all(color: Colors.black54, width: 0.2, ),
-                          image: DecorationImage(
-                            image: AssetImage("assets/img/wedding-image.png"),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      onTap: () => Modular.to.pushNamed("/post"),
-                    
-                  );
-                },
-                physics: BouncingScrollPhysics(),
-                shrinkWrap: false,
-                itemCount: 20,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+      body: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.only(top: 45, left: 2),
+            width: double.infinity,
+            height: 180,
+            child: Stack(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.arrow_back_ios),
+                  onPressed: () => Modular.to.pop(),
+                  color: AppStyles.primaryColor,
                 ),
-              ),
+                Observer(
+                  builder: (_) {
+                    
+                    var _user = _userController.user;
+
+                    /*
+                      While fetching the user
+                      let's show a placeholder
+                    */
+                    if (_user == null) return UserAvatarPlaceholder();
+                    /*
+                      Then show the user avatar
+                      UserAvatar receives the user as parameter so we can display the user's details
+                    */
+                    return UserAvatar(user: _user);
+
+                  },
+                )
+              ],
             ),
-          ],
-        ),
+          ),
+          Expanded(child: Observer(
+            builder: (_) {
+              var _user = _userController.user;
+
+              if (_user == null) return UserPostsPlaceholder();
+
+              var _userPosts = _user.posts;
+
+              return UserPosts(userPosts: _userPosts);
+            },
+          )),
+        ],
       ),
     );
   }
 }
+

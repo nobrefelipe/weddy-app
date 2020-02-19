@@ -9,32 +9,27 @@ part of 'user_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$UserController on _UserBase, Store {
-  final _$valueAtom = Atom(name: '_UserBase.value');
+  final _$userAtom = Atom(name: '_UserBase.user');
 
   @override
-  int get value {
-    _$valueAtom.context.enforceReadPolicy(_$valueAtom);
-    _$valueAtom.reportObserved();
-    return super.value;
+  UserModel get user {
+    _$userAtom.context.enforceReadPolicy(_$userAtom);
+    _$userAtom.reportObserved();
+    return super.user;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.context.conditionallyRunInAction(() {
-      super.value = value;
-      _$valueAtom.reportChanged();
-    }, _$valueAtom, name: '${_$valueAtom.name}_set');
+  set user(UserModel value) {
+    _$userAtom.context.conditionallyRunInAction(() {
+      super.user = value;
+      _$userAtom.reportChanged();
+    }, _$userAtom, name: '${_$userAtom.name}_set');
   }
 
-  final _$_UserBaseActionController = ActionController(name: '_UserBase');
+  final _$getUserAsyncAction = AsyncAction('getUser');
 
   @override
-  void increment() {
-    final _$actionInfo = _$_UserBaseActionController.startAction();
-    try {
-      return super.increment();
-    } finally {
-      _$_UserBaseActionController.endAction(_$actionInfo);
-    }
+  Future<dynamic> getUser(dynamic userID) {
+    return _$getUserAsyncAction.run(() => super.getUser(userID));
   }
 }

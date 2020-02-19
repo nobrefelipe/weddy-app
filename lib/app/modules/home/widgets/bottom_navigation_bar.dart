@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -40,7 +41,16 @@ class CustomBottomNavigationBar extends StatelessWidget {
               Icons.person,
               size: 25,
             ),
-            onPressed: () => Modular.to.pushNamed("user"),
+            onPressed: () async{
+              /* 
+                Get the current logged in user id
+              */
+              var userID =  ( await FirebaseAuth.instance.currentUser() ).uid;
+              /*
+                Navigate to the user view passing the id
+              */
+              Modular.to.pushNamed("/user/$userID");
+            },
           ),
           SizedBox(width: 0),
         ],

@@ -7,7 +7,6 @@ import 'package:weddy/app/modules/add-post/widgets/add_new_post_dialog.dart';
 import 'package:weddy/app/modules/auth/auth_module.dart';
 import 'package:weddy/app/modules/auth/pages/verifier/verifier_controller.dart';
 import 'package:weddy/app/shared/models/user_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 part 'add_post_controller.g.dart';
 
