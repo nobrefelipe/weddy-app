@@ -7,6 +7,8 @@ import 'package:weddy/app/shared/styles/app_styles.dart';
 import 'dart:math' as math;
 
 /*
+  TODO: improve this widget
+
   GUEST LIST
   this is the widget responsable for the guest list on top of the home view.
   It displays a horizontal scrollable list
@@ -137,39 +139,44 @@ class GuestScrollableList extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    /*
-                                      Guest profile image
-                                    */
-                                    Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        color: Colors.black12,
-                                        borderRadius: BorderRadius.circular(25),
-                                      ),
-                                      child: ClipRRect(
+                                child: GestureDetector(
+                                   onTap: () => Modular.to.pushNamed("/user/${guest.userUid}"),
+                                  child: Column(
+                                    children: [
+                                      /*
+                                        Guest profile image
+                                      */
+                                      Container(
+                                        width: 50,
+                                        height: 50,
+                                        decoration: BoxDecoration(
+                                          color: Colors.black12,
                                           borderRadius:
-                                              BorderRadius.circular(25.0),
-                                          child: (guest.picture != "")
-                                              ? Image.network(
-                                                  "${guest.picture}")
-                                              : Image.asset(
-                                                  "assets/img/avatar.png")),
-                                    ),
-                                    /*
-                                      Guest name
-                                    */
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 5.0),
-                                      child: Text(
-                                        "${snapshot.data[index].name} ${snapshot.data[index].surname}",
-                                        overflow: TextOverflow.ellipsis,
-                                        style: AppStyles.body_text_small,
+                                              BorderRadius.circular(25),
+                                        ),
+                                        child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(25.0),
+                                            child: (guest.picture != "")
+                                                ? Image.network(
+                                                    "${guest.picture}")
+                                                : Image.asset(
+                                                    "assets/img/avatar.png")),
                                       ),
-                                    ),
-                                  ],
+                                      /*
+                                        Guest name
+                                      */
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 5.0),
+                                        child: Text(
+                                          "${snapshot.data[index].name} ${snapshot.data[index].surname}",
+                                          overflow: TextOverflow.ellipsis,
+                                          style: AppStyles.body_text_small,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
