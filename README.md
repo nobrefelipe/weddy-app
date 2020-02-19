@@ -13,7 +13,7 @@ It is a sort of social network for guests of an wedding.
 
 ### Screenshots
 
-<img src="https://firebasestorage.googleapis.com/v0/b/weddy-app-1.appspot.com/o/screens%2FSimulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202020-02-19%20at%2000.26.48.png?alt=media&token=6d50188d-f371-45c1-8b87-06e8447bee71" alt="" width="250"/><img src="https://firebasestorage.googleapis.com/v0/b/weddy-app-1.appspot.com/o/screens%2FSimulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202020-02-19%20at%2000.27.20.png?alt=media&token=2b35282e-86b8-4891-9704-351ed02c03c1" alt="" width="250"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/weddy-app-1.appspot.com/o/screens%2FSimulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202020-02-19%20at%2000.26.48.png?alt=media&token=6d50188d-f371-45c1-8b87-06e8447bee71" alt="" width="250"/><img src="https://firebasestorage.googleapis.com/v0/b/weddy-app-1.appspot.com/o/screens%2FSimulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202020-02-19%20at%2000.34.21.png?alt=media&token=73aa9005-f6d2-4245-866e-0db8e67592a7" alt="" width="250"/>
 
 ### Tecnologies
 
