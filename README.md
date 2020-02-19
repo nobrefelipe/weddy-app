@@ -11,7 +11,7 @@ see: lib/app/modules/home/widgets/guest_scrollable_list.dar
 This if my first real world app  I am developing using flutter.
 It is a sort of social network for guests of an wedding.
 
-![Image description](https://firebasestorage.googleapis.com/v0/b/weddy-app-1.appspot.com/o/screens%2FSimulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202020-02-19%20at%2000.26.48.png?alt=media&token=6d50188d-f371-45c1-8b87-06e8447bee71)
+![Image description](https://firebasestorage.googleapis.com/v0/b/weddy-app-1.appspot.com/o/screens%2FSimulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202020-02-19%20at%2000.26.48.png?alt=media&token=6d50188d-f371-45c1-8b87-06e8447bee71 =250x)
 
 
 ### Tecnologies
