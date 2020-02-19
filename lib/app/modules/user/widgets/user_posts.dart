@@ -42,7 +42,7 @@ class UserPosts extends StatelessWidget {
               errorWidget: (context, url, error) => Icon(Icons.error),
             ),
           ),
-          onTap: () => Modular.to.pushNamed("/post"),
+          onTap: () => Modular.to.pushNamed("/post/${userPosts[index].uid}"),
         );
       },
     );

@@ -12,8 +12,8 @@ import 'complete_registration_module.dart';
 class CompleteRegistrationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
-    final _controller = CompleteRegistrationModule.to.get<CompleteRegistrationController>();
+    final _controller =
+        CompleteRegistrationModule.to.get<CompleteRegistrationController>();
 
     final _registerController = AuthModule.to.get<RegisterController>();
 
@@ -58,6 +58,7 @@ class CompleteRegistrationPage extends StatelessWidget {
                   padding: EdgeInsets.all(15),
                   placeholderStyle: AppStyles.body_text,
                   style: AppStyles.body_text,
+                  decoration: BoxDecoration(color: Colors.white),
                   onChanged: (val) => _controller.setName(val),
                 ),
                 SizedBox(height: 20),
@@ -68,6 +69,7 @@ class CompleteRegistrationPage extends StatelessWidget {
                   padding: EdgeInsets.all(15),
                   placeholderStyle: AppStyles.body_text,
                   style: AppStyles.body_text,
+                  decoration: BoxDecoration(color: Colors.white),
                   onChanged: (val) => _controller.setSurname(val),
                 ),
                 SizedBox(height: 20),
@@ -79,11 +81,13 @@ class CompleteRegistrationPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(40),
                   onPressed: () async {
                     // Finish the registration
-                    var registred = await _controller.finishRegistration( _registerController.userID, _registerController.email);
-                    
+                    var registred = await _controller.finishRegistration(
+                        _registerController.userID, _registerController.email);
+
                     // If all good, navigate to the home page
                     if (registred) {
-                      Navigator.of(context).pushReplacementNamed('/auth/verifier');
+                      Navigator.of(context)
+                          .pushReplacementNamed('/auth/verifier');
                     }
                   },
                 ),
