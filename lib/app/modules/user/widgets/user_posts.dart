@@ -2,7 +2,16 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:weddy/app/shared/models/post_model.dart';
+import 'package:weddy/app/shared/widgets/image_loader.dart';
 
+/*
+  USER POSTS WIDGET
+  This is the grid view respansable for displaying the posts
+
+  Receives a List of userPosts from the UserPage
+
+  @param userPosts, a list of user posts
+*/
 class UserPosts extends StatelessWidget {
 
   final List<PostModel> userPosts;
@@ -18,8 +27,16 @@ class UserPosts extends StatelessWidget {
         crossAxisCount: 3,
       ),
       itemBuilder: (BuildContext context, int index) {
-        //** POST ITEMS **/
+        /*
+          Post items
+          wrap each item with a GestureDetector
+          so we can listen to clicks on the picture
+        */
         return GestureDetector(
+          /*
+            This container will have a light grey background color 
+            and borders separating each picture
+          */
           child: Container(
             decoration: BoxDecoration(
               color: Colors.black12,
@@ -28,20 +45,19 @@ class UserPosts extends StatelessWidget {
                 width: 0.2,
               ),
             ),
-            child: CachedNetworkImage(
-              fit: BoxFit.cover,
-              imageUrl: userPosts[index].thumbnailUrl,
-              placeholder: (context, url) {
-                return Container(
-                  width: double.infinity,
-                  height: 100,
-                  color: Colors.black12,
-                  
-                );
-              },
-              errorWidget: (context, url, error) => Icon(Icons.error),
-            ),
+            /*
+              Post image
+            */
+            child: ImageLoader(image: userPosts[index].thumbnailUrl),
+            
+            
           ),
+          /*
+            On tap navigate to the post
+            The route is set in PostModule:
+            "/post/:id"
+            Router('/:id', child: (_, args) => PostPage(id: args.params['id'])),
+          */
           onTap: () => Modular.to.pushNamed("/post/${userPosts[index].uid}"),
         );
       },

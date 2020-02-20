@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:weddy/app/shared/styles/app_styles.dart';
 
+/*
+  CUSTOM DIALOG
+  This widget displays a custom styled dialog
+  Can be used whenever the app need to show a dialog 
+
+  @param title
+  @param description
+  @param buttonText
+
+*/
 class CustomDialog extends StatelessWidget {
   final String title, description, buttonText;
 
@@ -32,10 +42,10 @@ class CustomDialog extends StatelessWidget {
             left: 10,
             right: 10,
           ),
-          /** 
-           * BOX DECORATION
-           * Add border radius and box shadow
-          **/
+          /*
+           BOX DECORATION
+           Add border radius and box shadow
+          */
           decoration: new BoxDecoration(
             color: Colors.white,
             shape: BoxShape.rectangle,
@@ -48,17 +58,23 @@ class CustomDialog extends StatelessWidget {
               ),
             ],
           ),
-          /** DIALOG CONTENT **/
+          /*
+           DIALOG CONTENT 
+          */
           child: Column(
             mainAxisSize: MainAxisSize.min, // To make the card compact
             children: <Widget>[
-              /** DIALOG TITLE **/
+              /*
+               DIALOG TITLE 
+              */
               Text(
                 title,
                 style: AppStyles.h2_primary,
               ),
               SizedBox(height: 16.0),
-              /** DIALOG DESCRIPTION **/
+              /*
+                DIALOG DESCRIPTION 
+              */
               Text(
                 description,
                 textAlign: TextAlign.center,
@@ -67,7 +83,9 @@ class CustomDialog extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 24.0),
-              /** DIALOG OK BUTTON **/
+              /*
+                DIALOG OK BUTTON 
+              */
               Align(
                 alignment: Alignment.bottomRight,
                 child: FlatButton(

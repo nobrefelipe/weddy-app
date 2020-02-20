@@ -62,9 +62,7 @@ double _progress = 0.0;
    * UPLOAD BUTTON AND CHANGE PICTURE BUTTON
    */
   uploadButton() {
-    return Observer(
-      builder: (_) {
-        return Column(
+    return Column(
           children: [
             // BUTTON
             RaisedButton(
@@ -98,7 +96,6 @@ double _progress = 0.0;
            
           ],
         );
-      },
-    );
+   
   }
 }

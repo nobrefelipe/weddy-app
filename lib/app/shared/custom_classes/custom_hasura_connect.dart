@@ -2,6 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hasura_connect/hasura_connect.dart';
 
+/*
+  CUSTON HASURA CONNECT
+  create a wrapper for the HasuraConnect class
+  this way we can validate the user on every request
+*/
 class CustomHasuraConnect {
   
   static HasuraConnect getConnect(FirebaseAuth auth) {
