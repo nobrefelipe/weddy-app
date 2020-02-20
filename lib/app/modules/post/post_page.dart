@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:weddy/app/modules/post/post_controller.dart';
+import 'package:weddy/app/shared/styles/app_styles.dart';
 import 'package:weddy/app/shared/widgets/custom_back_button.dart';
 import 'package:weddy/app/shared/widgets/image_preview.dart';
 
@@ -35,12 +36,15 @@ class _PostPageState extends State<PostPage> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppStyles.appBgColor,
       body: Stack(
         children: [
           // CUSTOM BACK BUTTOn
-          CustomBackButton(),
-
+          Positioned(
+            top: 60,
+            left: 10,
+            child: CustomBackButton(),
+          ),
           Positioned(
             top: 150,
             left: (size.width / 2) - ((size.width - 100) / 2),
@@ -55,26 +59,26 @@ class _PostPageState extends State<PostPage> {
                    */
                   Observer(
                     builder: (_) {
-                      return 
-                      // if the post is there
-                      (_guestsController.post != null)
-                          // show the preview image
-                          ? ImagePreview(
-                              imageURL: _guestsController.post.imageUrl)
-                          : 
-                          // otherwise, show the loading box
-                          Container(
-                                width: size.width - 100,
-                                height: 300,
-                                color: Colors.black12,
-                                child: Center(
-                                  child: SizedBox(
-                                    width: 40,
-                                    height: 40,
-                                    child: CircularProgressIndicator(),
+                      return
+                          // if the post is there
+                          (_guestsController.post != null)
+                              // show the preview image
+                              ? ImagePreview(
+                                  imageURL: _guestsController.post.imageUrl)
+                              :
+                              // otherwise, show the loading box
+                              Container(
+                                  width: size.width - 100,
+                                  height: 300,
+                                  color: Colors.black12,
+                                  child: Center(
+                                    child: SizedBox(
+                                      width: 40,
+                                      height: 40,
+                                      child: CircularProgressIndicator(),
+                                    ),
                                   ),
-                                ),
-                              );
+                                );
                     },
                   ),
                   SizedBox(
@@ -87,15 +91,15 @@ class _PostPageState extends State<PostPage> {
                   Center(
                     child: Observer(
                       builder: (_) {
-                        return 
-                        // if the post is there
-                        (_guestsController.post != null)
-                          // show the download button
-                          ? Downloader(
-                              imageURL: _guestsController.post.imageUrl)
-                          : 
-                          // otherwise, show nothing
-                          Container();
+                        return
+                            // if the post is there
+                            (_guestsController.post != null)
+                                // show the download button
+                                ? Downloader(
+                                    imageURL: _guestsController.post.imageUrl)
+                                :
+                                // otherwise, show nothing
+                                Container();
                       },
                     ),
                   ),

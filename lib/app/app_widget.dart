@@ -9,7 +9,9 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Allow only Portrait Mode
+    /*
+      Allow only Portrait Mode
+    */
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
@@ -17,13 +19,17 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       navigatorKey: Modular.navigatorKey,
       title: 'Weddy App',
-      // Auth Verifier will be always the first route the app requests. 
-      // It is responsable for verifing if the user is logged in 
-      // and asking the user to provide the wedding  passcode
+      /*
+        Auth Verifier will be always the first route the app requests. 
+        It is responsable for verifing if the user is logged in 
+        and asking the user to provide the wedding  passcode
+      */
       initialRoute: '/auth/verifier', 
       onGenerateRoute: Modular.generateRoute,
       debugShowCheckedModeBanner: false,
-      // set the theme colors
+      /*
+        set the theme colors
+      */
       theme: ThemeData(
           primaryColor: AppStyles.primaryColor,
           accentColor: AppStyles.primaryColor,

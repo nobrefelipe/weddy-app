@@ -8,8 +8,7 @@ class AppStyles {
   static const Color primaryColor_Alpha = Color.fromRGBO(251, 120, 95, 0.6);
   static const Color textColor = Color.fromRGBO(70, 70, 70, 1);
   static const Color textColorAlpha = Color.fromRGBO(2, 34, 65, 0.8);
-  static const Color flatPink = Color.fromRGBO(249, 209, 202, 1);
-  static const Color flatBlue = Color.fromRGBO(222, 232, 254, 1);
+  static const Color appBgColor = Color.fromRGBO(235, 235, 235, 1);
 
   static const TextStyle h1 = TextStyle(
     fontFamily: 'firasans',
