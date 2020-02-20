@@ -5,7 +5,7 @@ import 'package:weddy/app/modules/guests/guests_controller.dart';
 import 'package:weddy/app/shared/styles/app_styles.dart';
 import 'package:weddy/app/shared/widgets/loading_indicator.dart';
 import 'package:weddy/app/shared/widgets/post_author.dart';
-import 'package:weddy/app/shared/widgets/search_guest_widget.dart';
+import './widgets/search_guest_widget.dart';
 
 class GuestsPage extends StatelessWidget {
   final _guestsController = Modular.get<GuestsController>();

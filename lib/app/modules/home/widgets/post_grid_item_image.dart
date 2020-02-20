@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:weddy/app/shared/widgets/image_loader.dart';
 
 class PostItemImage extends StatelessWidget {
   // PostItemImage will receive the image url and id from the parent
@@ -19,8 +20,6 @@ class PostItemImage extends StatelessWidget {
         child: GestureDetector(
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.grey,
-              borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
@@ -32,10 +31,14 @@ class PostItemImage extends StatelessWidget {
                   ),
                 )
               ],
-              image: DecorationImage(
-                image: NetworkImage(img),
-                fit: BoxFit.cover,
-              ),
+              // image: DecorationImage(
+              //   image: NetworkImage(img),
+              //   fit: BoxFit.cover,
+              // ),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: ImageLoader(image: img),
             ),
           ),
           // On tap navigate to the post view

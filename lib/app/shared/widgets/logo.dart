@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/*
+  WEDDY LOGO 
+*/
 class WeddayLogo extends StatelessWidget {
   const WeddayLogo({Key key}) : super(key: key);
 

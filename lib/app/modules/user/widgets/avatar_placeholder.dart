@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
+/*
+  Placeholder for the avatar widget
+  show it when the user is being loaded
+  Contains the cshape of the avatar widget
+  Circle on the top, faking the user picture
+  Squared on the bottom, faking the name surname 
+*/
 class UserAvatarPlaceholder extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: MediaQuery.of(context).size.width / 2 - 50,
-      top: 30,
-      child: Column(
+    return Column(
         children: [
           Container(
             width: 80,
@@ -25,7 +28,6 @@ class UserAvatarPlaceholder extends StatelessWidget {
             color: Colors.black12,
           )
         ],
-      ),
     );
   }
 }

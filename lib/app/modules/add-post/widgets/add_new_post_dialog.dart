@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:weddy/app/modules/add-post/add_post_controller.dart';
 import 'package:weddy/app/modules/add-post/widgets/uploder.dart';
+import 'package:weddy/app/shared/styles/app_styles.dart';
 import 'package:weddy/app/shared/widgets/custom_back_button.dart';
 import 'package:weddy/app/shared/widgets/image_preview.dart';
 
@@ -29,10 +30,15 @@ class AddNewPostDialog extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: AppStyles.appBgColor,
       body: Stack(
         children: [
           // CUSTOM BACK BUTTON
-          CustomBackButton(),
+          Positioned(
+            top: 60,
+            left: 10,
+            child: CustomBackButton(),
+          ),
 
           Positioned(
             top: 150,

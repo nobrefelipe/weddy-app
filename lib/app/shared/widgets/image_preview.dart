@@ -1,6 +1,13 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:weddy/app/shared/widgets/image_loader.dart';
+
+/*
+  IMAGE PREVIEW
+  This widget renders the image preview on the Post and Download pages
+
+  @param isFromDevice,
+  @param imageURL, 
+*/
 
 class ImagePreview extends StatelessWidget {
   final isFromDevice;
@@ -27,29 +34,23 @@ class ImagePreview extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10.0),
-        // If the image is from the device (upload preview)
+        /*
+          If the image is from the device (upload preview)
+          this means the image is coming from the user selection 
+          (upload screen)
+        */
         child: isFromDevice
             ? Image.file(
                 imageURL,
                 fit: BoxFit.contain,
               )
-            : CachedNetworkImage(
-                fit: BoxFit.contain,
-                imageUrl: imageURL,
-                placeholder: (context, url) {
-                  return Container(
-                    width: double.infinity,
-                    height: 300,
-                    color: Colors.black12,
-                    child: SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: CircularProgressIndicator(),
-                    ),
-                  );
-                },
-                errorWidget: (context, url, error) => Icon(Icons.error),
-              ),
+            : 
+            /*
+              If the image is from the network (download screen)
+              use the image loader widget
+            */
+            ImageLoader(image: imageURL)
+           
       ),
     );
   }
