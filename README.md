@@ -2,8 +2,6 @@
 
 ```
 STATUS: working in progress
-COMMENTS: trying to come out with a good commeting system to avoid messing with the widget chain
-see: lib/app/modules/home/widgets/guest_scrollable_list.dar
 ```
 
 
