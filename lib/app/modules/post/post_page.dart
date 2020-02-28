@@ -8,7 +8,18 @@ import 'package:weddy/app/shared/widgets/image_preview.dart';
 
 import 'widgets/downloader.dart';
 
+/*
+  This is the page that renders the post details
+  It receives the post id as parameter
+  The id comes from the route url /post/:id (see post_module.dart)
+
+  @param id, the post id
+*/
+
 class PostPage extends StatefulWidget {
+  /*
+    Post id
+  */
   final String id;
   const PostPage({Key key, this.id}) : super(key: key);
 
@@ -17,13 +28,18 @@ class PostPage extends StatefulWidget {
 }
 
 class _PostPageState extends State<PostPage> {
-  // Instanciate the Post Controller
+  /*
+    Instanciate the Post Controller
+  */
   final _guestsController = Modular.get<PostController>();
 
   // Post
   Future post;
 
-  // Get the post by the id
+  /*
+    Get the post by the id
+    do it on the initState to make sure we always get it when the users access this view
+  */
   @override
   void initState() {
     post = _guestsController.getPost(widget.id);
@@ -32,41 +48,66 @@ class _PostPageState extends State<PostPage> {
 
   @override
   Widget build(BuildContext context) {
-    // Size of viewport used to get the width and height
+    /*
+      Size of viewport used to get the width and height
+    */
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
       backgroundColor: AppStyles.appBgColor,
-      body: Stack(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // CUSTOM BACK BUTTOn
-          Positioned(
-            top: 60,
-            left: 10,
+          /*
+            Custom back button
+          */
+          Padding(
+            padding: EdgeInsets.only(top: 60.0, left: 10.0),
             child: CustomBackButton(),
           ),
-          Positioned(
-            top: 150,
-            left: (size.width / 2) - ((size.width - 100) / 2),
-            child: ConstrainedBox(
-              constraints: new BoxConstraints(
-                maxWidth: size.width - 100,
-              ),
+
+          /*
+            Post content
+            1. Post image
+            2. Dwnload button
+            3. feedback message + return to home button (managed by Downloader widget)
+          */
+          Expanded(
+            /*
+              Use a SingleChildScrollView inside a Expanded 
+              to make sure the content is scrollable and fill the page
+            */
+            child: SingleChildScrollView(
               child: Column(
                 children: [
+                  SizedBox(
+                    height: 40,
+                  ),
                   /*
-                   * IMAGE PREVIEW
-                   */
+                    Image preview
+                    Observe for changes in the post observable in the controller
+                    so we update the content with the right data
+                  */
                   Observer(
                     builder: (_) {
                       return
-                          // if the post is there
+                          /*
+                             If the post is there
+                          */
                           (_guestsController.post != null)
-                              // show the preview image
-                              ? ImagePreview(
-                                  imageURL: _guestsController.post.imageUrl)
+                              /*
+                                show the preview image
+                              */
+                              ? Container(
+                                  width: 280,
+                                  child: ImagePreview(
+                                      imageURL:
+                                          _guestsController.post.imageUrl),
+                                )
                               :
-                              // otherwise, show the loading box
+                              /*
+                                otherwise, show the loading box
+                              */
                               Container(
                                   width: size.width - 100,
                                   height: 300,
@@ -86,19 +127,27 @@ class _PostPageState extends State<PostPage> {
                   ),
 
                   /*
-                   * DOWNLOAD BUTTON
-                   */
+                    Download button 
+                  */
                   Center(
                     child: Observer(
                       builder: (_) {
                         return
-                            // if the post is there
+                            /*
+                              If the post is there
+                            */
                             (_guestsController.post != null)
-                                // show the download button
+                                /*
+                                  Show the download button
+                                  The Downloader widget is responsable for downloading the image
+                                  and displaying a feed back for the user
+                                */
                                 ? Downloader(
                                     imageURL: _guestsController.post.imageUrl)
                                 :
-                                // otherwise, show nothing
+                                /*  
+                                  otherwise, show nothing
+                                */
                                 Container();
                       },
                     ),
