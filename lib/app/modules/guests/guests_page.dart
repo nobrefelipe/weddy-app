@@ -103,7 +103,7 @@ Container guestList(guest) {
     padding: EdgeInsets.all(10.0),
     // Guest List Item
     child: GestureDetector(
-      onTap: () => Modular.to.pushNamed("user"),
+      onTap: () => Modular.to.pushNamed("/user/${guest.userUid}"),
       child: PostAuthor(
         userData: guest,
       ),
