@@ -55,7 +55,8 @@ class AuthPage extends StatelessWidget {
                   placeholderStyle: AppStyles.body_text,
                   style: AppStyles.body_text,
                   decoration: BoxDecoration(
-                    color: Colors.white
+                    color: Color.fromRGBO(0, 0, 0, 0.06),
+                    borderRadius: BorderRadius.circular(50),
                   ),
                   onChanged: (val) => _controller.setEmail(val),
                 ),
@@ -68,7 +69,8 @@ class AuthPage extends StatelessWidget {
                   placeholderStyle: AppStyles.body_text,
                   style: AppStyles.body_text,
                   decoration: BoxDecoration(
-                    color: Colors.white
+                    color: Color.fromRGBO(0, 0, 0, 0.06),
+                    borderRadius: BorderRadius.circular(50),
                   ),
                   onChanged: (val) => _controller.setPassword(val),
                 ),

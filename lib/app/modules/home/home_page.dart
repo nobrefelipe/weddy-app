@@ -8,8 +8,10 @@ import 'package:weddy/app/modules/home/widgets/guest_scrollable_list.dart';
 import 'package:weddy/app/modules/home/widgets/posts_grid.dart';
 import 'package:weddy/app/shared/widgets/logo.dart';
 
+
 class HomePage extends StatelessWidget {
 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,14 +24,14 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         title: WeddayLogo(),
         actions: [
-          // 
+          //
           // LOGOUT
           IconButton(
             icon: Icon(Icons.power_settings_new),
             onPressed: () async {
               // Log out
               await FirebaseAuth.instance.signOut();
-   
+
               // navigate to login
               Modular.to.pushReplacementNamed("/auth/login");
             },
@@ -41,6 +43,7 @@ class HomePage extends StatelessWidget {
         children: [
           /** GUEST SCROLLABLE LIST **/
           GuestScrollableList(),
+
 
           /** POSTS GRID **/
           PostsGrid(),
@@ -55,7 +58,4 @@ class HomePage extends StatelessWidget {
       floatingActionButton: AddNewPostButton(),
     );
   }
-
-  
-  
 }

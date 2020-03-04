@@ -7,7 +7,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomAppBar(
       shape: CircularNotchedRectangle(),
-      notchMargin: 9.0,
+      notchMargin: 15.0,
       elevation: 20,
       child: new Row(
         mainAxisSize: MainAxisSize.max,
@@ -16,26 +16,17 @@ class CustomBottomNavigationBar extends StatelessWidget {
           SizedBox(width: 0),
           IconButton(
             icon: Icon(
-              Icons.home,
-              size: 25,
-            ),
-            onPressed: () => Modular.to.pushReplacementNamed("/"),
-          ),
-          IconButton(
-            icon: Icon(
               Icons.search,
               size: 25,
             ),
             onPressed: () => Modular.to.pushNamed("/guests"),
           ),
-          SizedBox(width: 50),
-          IconButton(
-            icon: Icon(
-              Icons.local_offer,
-              size: 25,
-            ),
-            onPressed: () {},
-          ),
+
+          /*
+            Put two spaces here so the cions are spaced evenlly
+          */
+          SizedBox(width: 0),
+          SizedBox(width: 0),
           IconButton(
             icon: Icon(
               Icons.person,

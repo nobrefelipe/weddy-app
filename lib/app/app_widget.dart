@@ -5,8 +5,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:weddy/app/shared/styles/app_styles.dart';
 
 class AppWidget extends StatelessWidget {
-  
-
   @override
   Widget build(BuildContext context) {
     /*
@@ -24,20 +22,21 @@ class AppWidget extends StatelessWidget {
         It is responsable for verifing if the user is logged in 
         and asking the user to provide the wedding  passcode
       */
-      initialRoute: '/auth/verifier', 
+      initialRoute: '/auth/verifier',
       onGenerateRoute: Modular.generateRoute,
       debugShowCheckedModeBanner: false,
       /*
         set the theme colors
       */
       theme: ThemeData(
+        primaryColor: AppStyles.primaryColor,
+        accentColor: AppStyles.primaryColor,
+        cursorColor: AppStyles.primaryColor,
+        primaryIconTheme: IconThemeData(color: AppStyles.primaryColor),
+        cupertinoOverrideTheme: CupertinoThemeData(
           primaryColor: AppStyles.primaryColor,
-          accentColor: AppStyles.primaryColor,
-          cursorColor: AppStyles.primaryColor,
-          primaryIconTheme: IconThemeData(color: AppStyles.primaryColor),
-          cupertinoOverrideTheme: CupertinoThemeData(
-            primaryColor: AppStyles.primaryColor,
-          )),
+        ),
+      ),
     );
   }
 }

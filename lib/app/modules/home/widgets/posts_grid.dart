@@ -23,6 +23,7 @@ class PostsGrid extends StatelessWidget {
     // will update the gridScrollController Observable on the home_controller.dart
     // updateGridScrollController is the Action that does the job
     _grid_controller.addListener(() {
+
       var offset = _grid_controller.hasClients ? _grid_controller.offset : 0;
       homeController.updateGridScrollController(offset);
     });

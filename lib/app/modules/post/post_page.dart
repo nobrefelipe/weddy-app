@@ -101,8 +101,8 @@ class _PostPageState extends State<PostPage> {
                               ? Container(
                                   width: 280,
                                   child: ImagePreview(
-                                      imageURL:
-                                          _guestsController.post.imageUrl),
+                                    imageURL: _guestsController.post.imageUrl,
+                                  ),
                                 )
                               :
                               /*

@@ -1,3 +1,4 @@
+import 'package:weddy/app/modules/onboarding/onboarding_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hasura_connect/hasura_connect.dart';
 import 'package:weddy/app/app_controller.dart';
@@ -19,13 +20,11 @@ import 'package:weddy/app/shared/custom_classes/custom_hasura_connect.dart';
 import 'modules/add-post/repositories/add_post_repository.dart';
 import 'modules/auth/auth_module.dart';
 
-
 class AppModule extends MainModule {
-
-
   @override
   List<Bind> get binds => [
-       
+        Bind((i) => OnboardingController()),
+
         /*
           Main App Controller
         */
@@ -47,7 +46,6 @@ class AppModule extends MainModule {
         Bind((i) => AddPostController(i.get<AddPostRepository>())),
         Bind((i) => AddPostRepository(i.get<HasuraConnect>())),
 
-        
         /*
           Inject Custom Hasura Connect Library, 
           pass in  FirebaseAuth in 
