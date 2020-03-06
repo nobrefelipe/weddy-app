@@ -22,7 +22,6 @@ class AuthPage extends StatelessWidget {
         title: WeddayLogo(),
         backgroundColor: Colors.white,
         elevation: 0,
-        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(15),
@@ -50,12 +49,13 @@ class AuthPage extends StatelessWidget {
                 // EMAIL FIELD
                 CupertinoTextField(
                   placeholder: "Email",
-                  padding: EdgeInsets.all(15),
+                  padding: EdgeInsets.all(18),
                   keyboardType: TextInputType.emailAddress,
                   placeholderStyle: AppStyles.body_text,
                   style: AppStyles.body_text,
                   decoration: BoxDecoration(
-                    color: Colors.white
+                    color: Color.fromRGBO(0, 0, 0, 0.06),
+                    borderRadius: BorderRadius.circular(50),
                   ),
                   onChanged: (val) => _controller.setEmail(val),
                 ),
@@ -63,27 +63,32 @@ class AuthPage extends StatelessWidget {
                 // PASSWORD FIELD
                 CupertinoTextField(
                   placeholder: "Password",
-                  padding: EdgeInsets.all(15),
+                  padding: EdgeInsets.all(18),
                   obscureText: true,
                   placeholderStyle: AppStyles.body_text,
                   style: AppStyles.body_text,
                   decoration: BoxDecoration(
-                    color: Colors.white
+                    color: Color.fromRGBO(0, 0, 0, 0.06),
+                    borderRadius: BorderRadius.circular(50),
                   ),
                   onChanged: (val) => _controller.setPassword(val),
                 ),
                 SizedBox(height: 20),
-                // LOGIN BUTTON
+                /*
+                  Login button
+                */
                 CupertinoButton.filled(
                   child: Text("LOGIN"),
                   borderRadius: BorderRadius.circular(40),
                   onPressed: () async {
+
                     var response = await _controller.login();
 
                     if (response) {
                       Navigator.of(context)
                           .pushReplacementNamed("/auth/verifier");
                     }
+
                   },
                 ),
                 SizedBox(height: 20),
@@ -92,6 +97,7 @@ class AuthPage extends StatelessWidget {
                   onTap: () =>
                       Navigator.of(context).pushNamed("/auth/register"),
                 ),
+                
               ],
             ),
           ),

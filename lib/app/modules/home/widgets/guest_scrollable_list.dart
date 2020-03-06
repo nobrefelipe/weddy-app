@@ -1,10 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:weddy/app/modules/guests/guests_controller.dart';
 import 'package:weddy/app/modules/home/home_controller.dart';
 import 'package:weddy/app/shared/styles/app_styles.dart';
-import 'dart:math' as math;
 
 /*
   TODO: improve this widget
@@ -52,6 +53,7 @@ class GuestScrollableList extends StatelessWidget {
         var offset = _homeController.gridScrollController;
         var factor = 1 - offset / 300;
         var amount = (factor <= 0) ? 0.0 : (factor >= 1) ? 1.0 : factor;
+
         /*
           Returning a AnimatedContainer
           that will animate its height based on the variables set above
@@ -66,9 +68,12 @@ class GuestScrollableList extends StatelessWidget {
           child: Opacity(
             opacity: amount,
             /*  
-              Defining a Column containing TWO main Widgets
-              1. Container : contains the top part 
+              Defining a Column containing TWO Expanded Widgets
+              1. Expanded : contains the top part 
               2. Expanded: : contains the list view         
+
+              Use Expanded here because we animate the size of the widgets within it
+              this avoids overflow issues when scaling down the wigets 
             */
             child: Column(
               children: [
@@ -77,32 +82,35 @@ class GuestScrollableList extends StatelessWidget {
                   1. Text : contains the title of the widget "Guests"
                   2. GestureDetector : contains a button that leads to the guests page   
                 */
-                Container(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Guests",
-                          style: TextStyle(
-                              fontSize: 18 * amount,
-                              fontFamily: 'firasans',
-                              fontWeight: FontWeight.w700),
-                        ),
-                        GestureDetector(
-                          onTap: () => Modular.to.pushNamed('/guests'),
-                          child: Text(
-                            "see all",
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Guests",
                             style: TextStyle(
-                              fontSize: 14 * amount,
-                              fontFamily: 'firasans',
+                                fontSize: 18 * amount,
+                                fontFamily: 'firasans',
+                                fontWeight: FontWeight.w700),
+                          ),
+                          GestureDetector(
+                            onTap: () => Modular.to.pushNamed('/guests'),
+                            child: Text(
+                              "see all",
+                              style: TextStyle(
+                                fontSize: 14 * amount,
+                                fontFamily: 'firasans',
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -113,6 +121,7 @@ class GuestScrollableList extends StatelessWidget {
         
                 */
                 Expanded(
+                  flex: 2,
                   /*
                     Use stream builder because allGuets will return a stream
                     from hasura subscription
@@ -140,7 +149,8 @@ class GuestScrollableList extends StatelessWidget {
                               padding: const EdgeInsets.all(5.0),
                               child: SingleChildScrollView(
                                 child: GestureDetector(
-                                   onTap: () => Modular.to.pushNamed("/user/${guest.userUid}"),
+                                  onTap: () => Modular.to
+                                      .pushNamed("/user/${guest.userUid}"),
                                   child: Column(
                                     children: [
                                       /*

@@ -52,6 +52,7 @@ flutter:
     - assets/img/wedday-logo.png
     - assets/img/be-the-first.png  
     - assets/img/avatar.png  
+    - assets/img/onboarding_bg.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

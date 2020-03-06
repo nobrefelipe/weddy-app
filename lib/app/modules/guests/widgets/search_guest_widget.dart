@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:weddy/app/modules/guests/guests_controller.dart';
 import 'package:weddy/app/shared/styles/app_styles.dart';
@@ -12,7 +13,6 @@ import 'package:weddy/app/shared/styles/app_styles.dart';
    => guestsController.filterGuestByName(value);
 */
 class SearchGuestWidget extends StatelessWidget {
-
   final GuestsController guestsController;
 
   const SearchGuestWidget({Key key, this.guestsController}) : super(key: key);
@@ -20,31 +20,18 @@ class SearchGuestWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-    padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
-    child: TextField(
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(vertical: 0),
-        labelText: "Search",
-        labelStyle: AppStyles.tags,
-        prefixIcon: Icon(
-          Icons.search,
-          color: AppStyles.primaryColorAlpha,
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
+      child: CupertinoTextField(
+        placeholder: "Search",
+        padding: EdgeInsets.all(15),
+        placeholderStyle: AppStyles.body_text,
+        style: AppStyles.body_text,
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(0, 0, 0, 0.07),
+          borderRadius: BorderRadius.circular(50),
         ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(25.0),
-          ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppStyles.primaryColorAlpha),
-          borderRadius: BorderRadius.circular(25.0),
-        ),
-        focusColor: AppStyles.primaryColorAlpha,
+        onChanged: (value) => guestsController.filterGuestByName(value),
       ),
-      onChanged: (value) {
-        guestsController.filterGuestByName(value);
-      },
-    ),
-  );
+    );
   }
 }

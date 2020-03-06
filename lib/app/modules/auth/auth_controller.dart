@@ -23,6 +23,7 @@ abstract class _AuthBase with Store {
   @observable
   String errorMessage = "";
 
+
   //
   //  ACTIONS
   //
@@ -38,7 +39,7 @@ abstract class _AuthBase with Store {
   // LOGIN
   @action
   Future<bool> login() async{
-    
+
     // Check if email is not empty
     if (email == null) {
       errorMessage = "Email is required.";
@@ -58,17 +59,18 @@ abstract class _AuthBase with Store {
     }
 
     final FirebaseAuth _auth = FirebaseAuth.instance;
-    final FirebaseUser user = (await _auth.signInWithEmailAndPassword(
-      email: email,
-      password: password,
-    ).catchError((error) {
-      //Handle email already registred error
-      errorMessage = error != null ? "You have entered an invalid email or password." : "";
-    })).user;
-
-    // We save the token to the device's memory
-    // using Shared Preferences 
-    // so we can keep the suer authenticated with the token
+    final FirebaseUser user = (
+      await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      ).catchError((error) {
+        //Handle email already registred error
+        errorMessage = error != null ? "You have entered an invalid email or password." : "";
+        
+      })
+      ).user;
+  
+    
     var getIdToken = await user.getIdToken();
     var valid = getIdToken != null;
 

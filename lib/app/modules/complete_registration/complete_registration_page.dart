@@ -58,7 +58,10 @@ class CompleteRegistrationPage extends StatelessWidget {
                   padding: EdgeInsets.all(15),
                   placeholderStyle: AppStyles.body_text,
                   style: AppStyles.body_text,
-                  decoration: BoxDecoration(color: Colors.white),
+                   decoration: BoxDecoration(
+                    color: Color.fromRGBO(0, 0, 0, 0.06),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
                   onChanged: (val) => _controller.setName(val),
                 ),
                 SizedBox(height: 20),
@@ -69,7 +72,10 @@ class CompleteRegistrationPage extends StatelessWidget {
                   padding: EdgeInsets.all(15),
                   placeholderStyle: AppStyles.body_text,
                   style: AppStyles.body_text,
-                  decoration: BoxDecoration(color: Colors.white),
+                   decoration: BoxDecoration(
+                    color: Color.fromRGBO(0, 0, 0, 0.06),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
                   onChanged: (val) => _controller.setSurname(val),
                 ),
                 SizedBox(height: 20),
