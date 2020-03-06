@@ -100,6 +100,15 @@ class AppStyles {
     letterSpacing: 1.0
   );
 
+  static const TextStyle h4 = TextStyle(
+    fontFamily: 'firasans',
+    color: textColor,
+    fontSize: 16,
+    fontWeight: FontWeight.normal,
+    letterSpacing: 0.3,
+    height: 1.5
+  );
+
   static const TextStyle body_text_medium = TextStyle(
     fontFamily: 'firasans',
     color: textColor,

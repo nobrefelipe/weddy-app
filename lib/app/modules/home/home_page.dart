@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
               await FirebaseAuth.instance.signOut();
 
               // navigate to login
-              Modular.to.pushReplacementNamed("/auth/login");
+              Modular.to.pushReplacementNamed("/onboarding");
             },
           ),
         ],

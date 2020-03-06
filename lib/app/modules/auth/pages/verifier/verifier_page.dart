@@ -22,16 +22,23 @@ class _VerifierPageState extends State<VerifierPage> {
 
   bool loading = false;
 
+  bool isLoggedIn = false;
+
+  
+
   // CHECK IF USER IS LOGGED IN
   // check if we have a token
   checkLogin() async {
+    isLoggedIn = await _controller.checkLogin();
 
-    var result = await _controller.checkLogin();
-
-    if (!result) {
+    if (!isLoggedIn) {
       // navigate to login
-      Modular.to.pushReplacementNamed("/auth/login");
+      // Modular.to.pushReplacementNamed("/auth/login");
+      Modular.to.pushReplacementNamed("/onboarding");
     }
+
+    setState(() => isLoggedIn = true);
+
   }
 
   @override
@@ -40,77 +47,86 @@ class _VerifierPageState extends State<VerifierPage> {
     checkLogin();
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
     final _appBarHeight = 115;
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        title: WeddayLogo(),
-        actions: [
-          // 
-          // LOGOUT
-          IconButton(
-            icon: Icon(Icons.power_settings_new),
-            onPressed: () async {
-              // Log out
-              await FirebaseAuth.instance.signOut();
-   
-              // navigate to login
-              Modular.to.pushReplacementNamed("/auth/login");
-            },
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.all(15),
-          width: _screenSize.width,
-          height: _screenSize.height - _appBarHeight,
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Text(
-                  "Enter the wedding code",
-                  style: AppStyles.h2_primary,
-                ),
-                SizedBox(height: 10),
-                Observer(
-                  builder: (_) {
-                    return Text(
-                      "${_controller.errorMessage}",
-                      style: AppStyles.error_text,
-                    );
-                  },
-                ),
+    /*
+      Check if the user is logged in to show the passcode input
+      if the user is not logged in the app will redirect to the OnBoarding screen
+      we dont want to show the user the passcode input in that case, se we display a empty Container
+    */
+    return !isLoggedIn
+        ? Container(
+            color: Colors.white,
+          )
+        : Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              automaticallyImplyLeading: false,
+              elevation: 0,
+              title: WeddayLogo(),
+              actions: [
                 //
-                // WEDDING CODE INPUT
-                PinEntryTextField(
-                  fields: 6,
-                  onSubmit: (String pin) async {
+                // LOGOUT
+                IconButton(
+                  icon: Icon(Icons.power_settings_new),
+                  onPressed: () async {
+                    // Log out
+                    await FirebaseAuth.instance.signOut();
 
-                    // Show loading
-                    setState(() => loading = true);
-
-                    await _controller.getWeddingByCode(pin);
-
-                    // Hide loading
-                     setState(() => loading = false);
-
+                    // navigate to login
+                    Modular.to.pushReplacementNamed("/onboarding");
                   },
                 ),
-                SizedBox(height: 60),
-                loading ? CircularProgressIndicator() : Container(),
               ],
             ),
-          ),
-        ),
-      ),
-    );
+            body: SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.all(15),
+                width: _screenSize.width,
+                height: _screenSize.height - _appBarHeight,
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text(
+                        "Enter the wedding code",
+                        style: AppStyles.h2_primary,
+                      ),
+                      SizedBox(height: 10),
+                      Observer(
+                        builder: (_) {
+                          return Text(
+                            "${_controller.errorMessage}",
+                            style: AppStyles.error_text,
+                          );
+                        },
+                      ),
+                      //
+                      // WEDDING CODE INPUT
+                      PinEntryTextField(
+                        fields: 6,
+                        onSubmit: (String pin) async {
+                          // Show loading
+                          setState(() => loading = true);
+
+                          await _controller.getWeddingByCode(pin);
+
+                          // Hide loading
+                          setState(() => loading = false);
+                        },
+                      ),
+                      SizedBox(height: 60),
+                      loading ? CircularProgressIndicator() : Container(),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
   }
 }
