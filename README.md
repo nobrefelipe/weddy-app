@@ -1,4 +1,4 @@
-# weddy
+# wedday
 
 ```
 STATUS: working in progress
