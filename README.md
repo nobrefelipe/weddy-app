@@ -25,7 +25,7 @@ So no one needs to ask anybody to send the pictures over.
 
 **Flutter**
 
-**Flutter Modular** for the project structure and dependency incection
+**Flutter Modular** for the project structure and dependency injection
 
 **MobX** for state management 
 
